@@ -1,0 +1,28 @@
+
+
+<div class="columns is-mobile time">
+  <span class="column is-1">
+      {{getTime()| date:'HH:mm:ss'}}
+  </span>
+</div>
+
+<div class="columns" *ngFor="let stop of stopList.getStops()"  >
+  <div class="column">
+    <stop [item]="stop" ></stop>
+  </div>
+</div>
+<div class="columns new-stop">
+  <div class="column is-12">
+    <a class="show-edit button" (click)="toggleShowAdd()" [ngClass]="{'is-primary':showAddNew}">+</a>
+  </div>
+  <div class="column is-12">
+    <div *ngIf="showAddNew" class="columns">
+      <div class="column is-3">
+        <input type="number" #stopid class="input" />
+      </div>
+      <div class="column">
+        <a class="button" (click)="addNew(stopid.value)" [ngClass]="{'is-disabled': stopid.value.length==0}">Add</a>
+      </div>
+    </div>
+</div>
+</div>

@@ -1,0 +1,35 @@
+
+@import "~bulma";
+
+.time {
+  justify-content: space-around;
+}
+
+
+.show-edit {
+  width: 100%;
+}
+
+.stops-item_header {
+      margin: 0 0 0 1em;
+      cursor: pointer;
+}
+.stops-item_row {
+  justify-content: space-around;
+
+  .column:last-of-type {
+    text-align: right;
+  }
+
+}
+
+.stops-item_line {
+  font-size: 0.9rem;
+}
+
+
+.new-stop {
+  &.columns {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,15 @@
+<div class="stops-item">
+  <div class="columns">
+    <div class="column is-6">
+    <h1 class="stops-item_header title" (click)="displaTimetable(item.key)">{{item.content.title}} ({{item.key}})</h1>
+    </div>
+    <div class="column" >
+    <button class="button is-outlined"  (click)="stopList.delete(item.key)">Delete</button>
+    </div>
+  </div>
+  <div class="stops-item_row columns is-mobile">
+    <div *ngFor="let time of getNextDepartures()" class="column is-3">
+      <p>{{time.hour}}.{{time.minute}} / <span class="stops-item_line">{{time.lines}}</span></p>
+    </div>
+   </div>
+</div>
