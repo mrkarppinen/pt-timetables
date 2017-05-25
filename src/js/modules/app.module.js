@@ -12,6 +12,7 @@ import Stop from './../components/stop';
 import ScheduleService from './../schedule-service';
 import Storage from './../storage';
 import TimetableView from './../components/timetable'
+import TimePipe from './../pipes/TimePipe'
 
 var routes = RouterModule.forRoot([
   {
@@ -31,8 +32,8 @@ var AppModule = NgModule({
   imports: [BrowserModule, HttpModule, routes],
   declarations: [App, List, Stop, TimetableView],
   bootstrap: [App],
-  providers: [ScheduleService, Storage, StopList],
-  directives: [NgFor, NgIf]
+  providers: [ScheduleService, Storage, StopList, TimePipe],
+  directives: [NgFor, NgIf, TimePipe]
 }).Class({
   constructor: function (){}
 })
@@ -42,6 +43,6 @@ ScheduleService.parameters = [[Http]];
 List.parameters = [[StopList], [ChangeDetectorRef]];
 StopList.parameters = [[ScheduleService], [Storage]];
 Stop.parameters = [[StopList], [Router]];
-TimetableView.parameters = [[StopList], [ActivatedRoute]];
+TimetableView.parameters = [[StopList], [ActivatedRoute], [TimePipe]];
 
 export default AppModule;

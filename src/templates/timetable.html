@@ -1,14 +1,8 @@
-<div *ngFor="let day of data.content.days">
-  <h2>{{day.title}}</h2>
-<div *ngFor="let hour of day.hours" class="columns is-mobile">
-  <div class="column is-1">
-    {{hour.time}}
-  </div>
-  <div class="column">
-    <span *ngFor="let minute of hour.minutes">
-      {{minute.time}}/{{minute.lines}}
-    </span>
-  </div>
-</div>
+<h2>{{time | date: 'EEEE'}}</h2>
+<div *ngFor="let item of data.content.timetable" class="columns is-mobile">
 
-</div>'
+  <div class="column is-1">
+    {{timePipe.transform(item.time)}}/{{item.lines}}
+  </div>
+
+</div>

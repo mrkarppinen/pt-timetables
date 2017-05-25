@@ -4,7 +4,7 @@ class ScheduleService {
 
   constructor (http){
     this.http = http;
-    this.host = 'https://app-services.eu-gb.mybluemix.net';
+    this.host = 'https://apps-services.eu-gb.mybluemix.net';
   }
 
   get(id) {

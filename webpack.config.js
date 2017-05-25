@@ -3,7 +3,7 @@ var path = require('path');
 
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const HtmlWebpackExcludeAssetsPlugin = require('html-webpack-exclude-assets-plugin');
 
 module.exports = {
   entry: './src/js/main.js',
@@ -46,8 +46,10 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       filename: path.join(__dirname, 'public/index.html'),
-      template: path.join(__dirname, 'src/index.html')
-    })
+      template: path.join(__dirname, 'src/index.html'),
+      excludeAssets: [/main.js/]
+    }),
+    new HtmlWebpackExcludeAssetsPlugin()
   ]
 ,
 devServer: {

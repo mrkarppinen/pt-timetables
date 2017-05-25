@@ -12,14 +12,13 @@ class StopList {
 
   load(){
     var ids = this.storage.getStops();
-    console.log(ids.length);
     if (ids.length > 0){
 
         this.scheduleService.getAll(ids).subscribe(
           data => {
 
                data.json().forEach((stop) => {
-                 this.stops.set(stop.key, stop);
+                 this.stops.set(stop._id, stop);
                });
 
            },

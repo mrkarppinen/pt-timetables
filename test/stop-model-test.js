@@ -7,33 +7,24 @@ chai.should();
 
 
 describe('Stop', function (){
+
       let timetable = {
-        content: {
-          "title":"Opera",
-          "lines":["10"],
-          "days": [
-            {
-              "title": "Mon-fri",
-              "hours": [
-                {"time":"05","minutes":[ {"time":"39","lines":["10"]},{"time":"54","lines":["10"]} ]},
-                {"time":"06","minutes":[ {"time":"04","lines":["10"]},{"time":"14","lines":["10"]},{"time":"22","lines":["10"]},{"time":"30","lines":["10"]},{"time":"37","lines":["10"]},{"time":"44","lines":["10"]},{"time":"52","lines":["10"]} ]}
-              ]
-            },
-            {
-              "title": "Saturday",
-              "hours": [
-                {"time":"08","minutes":[ {"time":"04","lines":["10"]}, {"time":"15","lines":["10"]}, {"time":"27","lines":["10"]} ]},
-                {"time":"09","minutes":[ {"time":"06","lines":["10"]}, {"time":"17","lines":["10"]}, {"time":"29","lines":["10"]} ]},
-                {"time":"10","minutes":[ {"time":"08","lines":["10"]}, {"time":"19","lines":["10"]}, {"time":"31","lines":["10"]} ]}
-              ]
-            },
-            {
-              "title": "Sunday",
-              "hours": [ {"time":"11","minutes":[ {"time":"08","lines":["10"]}, {"time":"19","lines":["10"]}, {"time":"31","lines":["10"]} ]} ]
-            }
-          ]
-        }
-      };
+        "_id":"1808",
+        "_rev":"1-6c2d4fb1cab722bffc765a1db9513a3c",
+        "updated":"20170523",
+        "lines": ["201"],
+        "content":
+        {
+          "title":"Taavinkuja",
+          "timetable":[
+              {"time":27720,"lines":["201"]},{"time":29220,"lines":["201"]},{"time":31320,"lines":["201"]},
+              {"time":32820,"lines":["201"]},{"time":34920,"lines":["201"]},{"time":36420,"lines":["201"]},
+              {"time":38520,"lines":["201"]},{"time":40020,"lines":["201"]},{"time":42120,"lines":["201"]},
+              {"time":43620,"lines":["201"]},{"time":45720,"lines":["201"]},{"time":47220,"lines":["201"]},
+              {"time":49320,"lines":["201"]},{"time":50820,"lines":["201"]},{"time":52920,"lines":["201"]},
+              {"time":54420,"lines":["201"]},{"time":56520,"lines":["201"]},{"time":58020,"lines":["201"]},
+              {"time":60120,"lines":["201"]},{"time":61620,"lines":["201"]},
+              {"time":63720,"lines":["201"]},{"time":65220,"lines":["201"]}]}};
 
       let stop = new Timetable(timetable);
 
@@ -48,7 +39,7 @@ describe('Stop', function (){
 
       describe ('title', function (){
           it('equals Opera', function (){
-              stop.timetable.content.title.should.equal('Opera');
+              stop.timetable.content.title.should.equal('Taavinkuja');
           });
       });
 
@@ -57,7 +48,6 @@ describe('Stop', function (){
       describe('getDepartures', function (){
 
 
-        describe("Weekdays", function (){
 
           it('should return 3 departures', function (){
             let day = new Date(2020, 2, 2, 9, 15);
@@ -67,40 +57,6 @@ describe('Stop', function (){
             // departures[2].minute.should.equal('08');
           });
 
-
-        });
-
-
-        describe("Saturday", function (){
-
-          it('should return 3 departures', function (){
-            let day = new Date(2020, 1, 29, 9, 15);
-            let departures = stop.getDepartures(day, 3);
-            departures.should.have.length(3);
-            departures[2].hour.should.equal('10');
-            departures[2].minute.should.equal('08');
-          });
-
-
-        });
-
-          describe("Sunday", function (){
-
-
-            it('should return empty arr', function (){
-              let day = new Date(2020, 2, 1, 11, 50);
-              let departures = stop.getDepartures(day, 3);
-              departures.should.have.length(3);
-            });
-
-            it('should return 2 departures', function (){
-              let day = new Date(2020, 2, 1, 11, 10);
-              let departures = stop.getDepartures(day, 2);
-              departures.should.have.length(2);
-            });
-
-
-          });
 
 
       });

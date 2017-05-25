@@ -6,11 +6,13 @@ var TimetableView = Component({
   template: require('../../templates/timetable.html')
 }).Class({
 
-  constructor: function(stopList, activatedRoute){
+  constructor: function(stopList, activatedRoute, TimePipe){
     this.stopList = stopList;
     this.activatedRoute = activatedRoute;
     this.id = null;
     this.data = '';
+    this.timePipe = TimePipe;
+    this.time = Date.now();
   },
   ngOnInit: function (){
     this.activatedRoute.params.subscribe((data) => {
